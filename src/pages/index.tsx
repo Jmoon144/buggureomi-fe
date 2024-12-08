@@ -4,6 +4,7 @@ import Main from "./main";
 import { MockRouteList } from "./_mock";
 import QuestionCreateComplete from "./question-create-complete";
 import QuestionCreate from "./question-create";
+import AnswerCreate from "./answer-create";
 import SelfReflection from "@/pages/self-reflection";
 
 export default function Routing() {
@@ -29,6 +30,7 @@ export default function Routing() {
             path="/question-create-complete"
             render={() => <QuestionCreateComplete />}
           />
+          <Route exact path="/answer-create" render={() => <AnswerCreate />} />
           <Route
             exact
             path="/self-reflection"

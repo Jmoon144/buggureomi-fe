@@ -34,6 +34,13 @@ export function MockRouteList() {
       path: "/main",
       component: "Main",
     },
+    // 답변 생성
+    {
+      task: "MCRT-1",
+      path: "/answer-create",
+      component: "AnswerCreate",
+    },
+    // 나 돌아보기
     {
       task: "MAIN-5",
       path: "/self-reflection",

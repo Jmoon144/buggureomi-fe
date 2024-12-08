@@ -1,28 +1,44 @@
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
+import RandomInput from "./components/RandomInput";
 import { useState } from "react";
-import { toggleIsShowAnswerCountOption } from "./api/pouch";
+
+const BUNDEL_IMAGE_URL =
+  "https://img.freepik.com/premium-vector/santa-s-sack-pouch-sack-isolated-white-background-vector-illustration_650542-580.jpg";
 
 export default function QuestionCreate() {
-  const [isShowAnswerCount, setIsShowAnswerCount] = useState<boolean>(false);
+  const [question, setQuestion] = useState<string>("");
 
-  const handleClick = () => {
-    toggleIsShowAnswerCountOption();
+  const handleChangeQuestion = (value: string) => {
+    setQuestion(value);
   };
 
   return (
-    // section or form submit
-    <section className="flex flex-col items-center">
-      <Switch
-        id="show-answer-counts"
-        onCheckedChange={setIsShowAnswerCount}
-        checked={isShowAnswerCount}
-      />
-      <Label htmlFor="show-answer-counts">
-        내 보따리에 담긴 답변 갯수가 보이게 할까요?
-      </Label>
-      <Button onClick={handleClick}>질문 생성</Button>
+    <section className="flex flex-col items-center h-screen">
+      <div className="flex flex-col items-center gap-4 grow">
+        <p className="text-center">
+          <b>
+            나에 대한 질문을 만들어볼까요?
+            <br />
+            만들기 어렵다면 준비된 질문을 활용해보세요!
+          </b>
+        </p>
+
+        <img src={BUNDEL_IMAGE_URL} alt="bundle" />
+        <span>
+          <b>대답을 담을 보따리에 어떤 문구를 붙일까요?</b>
+        </span>
+        <RandomInput value={question} onChange={handleChangeQuestion} />
+      </div>
+
+      <div className="p-12">
+        <Button
+          disabled={!question.trim().length}
+          onClick={() => {
+            // TODO: Detail Page로 direct되도록 로직 추가 필요
+          }}
+          children="다음"
+        />
+      </div>
     </section>
   );
 }

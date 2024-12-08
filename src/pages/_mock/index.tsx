@@ -14,9 +14,14 @@ export function MockRouteList() {
   const MockRouteList: MockRouteType[] = [
     // 질문 생성
     {
-      task: "QCRT-2",
+      task: "QCRT-1",
       path: "/question-create",
       component: "QuestionCreate",
+    },
+    {
+      task: "QCRT-2",
+      path: "/question-create-detail",
+      component: "QuestionCreateDetail",
     },
     {
       task: "QCRT-3",

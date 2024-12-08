@@ -72,7 +72,7 @@ export default {
           "17px",
           {
             lineHeight: "1.4",
-            letterSpacing: "0.3em",
+            letterSpacing: "0.3px",
             fontWeight: "500",
           },
         ],

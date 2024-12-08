@@ -6,6 +6,7 @@ import QuestionCreateComplete from "./question-create-complete";
 import QuestionCreate from "./question-create";
 import AnswerCreate from "./answer-create";
 import SelfReflection from "@/pages/self-reflection";
+import AnswerResult from "./answer-result";
 
 export default function Routing() {
   return (
@@ -36,6 +37,7 @@ export default function Routing() {
             path="/self-reflection"
             render={() => <SelfReflection />}
           />
+          <Route exact path="/answer-result" render={() => <AnswerResult />} />
           <Redirect to="/" />
         </Switch>
       </BrowserRouter>

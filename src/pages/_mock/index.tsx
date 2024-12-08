@@ -46,6 +46,12 @@ export function MockRouteList() {
       path: "/self-reflection",
       component: "SelfReflection",
     },
+    // 답변
+    {
+      task: "MYRLT-1",
+      path: "/answer-result",
+      component: "AnswerResult",
+    },
   ];
 
   return (

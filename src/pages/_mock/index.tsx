@@ -34,6 +34,11 @@ export function MockRouteList() {
       path: "/main",
       component: "Main",
     },
+    {
+      task: "MAIN-5",
+      path: "/self-reflection",
+      component: "SelfReflection",
+    },
   ];
 
   return (

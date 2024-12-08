@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { BUNDEL_IMAGE_URL } from "@/constant/image";
 import { Answer } from "@/types/answer";
 import { SelfReflection } from "@/types/self-reflection";
+import { useHistory } from "react-router-dom";
 
 type Props = {
   answerCount: number;
@@ -15,6 +16,8 @@ export default function WithAnswer({ answerCount, previewMessage }: Props) {
     list: [],
     regDate: "",
   };
+
+  const history = useHistory();
 
   return (
     <div className="flex flex-col items-center">
@@ -31,7 +34,9 @@ export default function WithAnswer({ answerCount, previewMessage }: Props) {
       </span>
       <ShareButton className="mb-2" />
       {selfReflection.list.length === 0 ? (
-        <Button>나 돌아보기</Button>
+        <Button onClick={() => history.push("/self-reflection")}>
+          나 돌아보기
+        </Button>
       ) : (
         <Button>내가 생각한 나</Button>
       )}

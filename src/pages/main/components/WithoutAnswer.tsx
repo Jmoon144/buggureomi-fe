@@ -1,8 +1,10 @@
 import ShareButton from "@/components/share/ShareButton";
 import { Button } from "@/components/ui/button";
 import { BUNDEL_IMAGE_URL } from "@/constant/image";
+import { useHistory } from "react-router-dom";
 
 export default function WithoutAnswer() {
+  const history = useHistory();
   return (
     <div className="flex flex-col items-center">
       <span>어떤 쪽지들이 담길까요?</span>
@@ -13,7 +15,9 @@ export default function WithoutAnswer() {
         쪽지를 넣어줄 친구에게 공유해보아요!
       </span>
       <ShareButton className="mb-2" />
-      <Button>먼저 올 한해의 나를 돌아볼까요?</Button>
+      <Button onClick={() => history.push("/self-reflection")}>
+        먼저 올 한해의 나를 돌아볼까요?
+      </Button>
     </div>
   );
 }

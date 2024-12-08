@@ -1,3 +1,4 @@
+import RootLayout from "@/components/RootLayout";
 import Main from "./pages/main";
 // import QuestionCreate from "./pages/question-create";
 
@@ -6,7 +7,9 @@ function App() {
     <>
       {/* TODO: 추후 Route 작업 필요 */}
       {/* <QuestionCreate /> */}
-      <Main />
+      <RootLayout>
+        <Main />
+      </RootLayout>
     </>
   );
 }

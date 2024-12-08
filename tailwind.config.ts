@@ -21,13 +21,12 @@ export default {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+        primary: "#7038F3",
+        secondary: "#936FE9",
+        gray: {
+          dark: "#333333",
+          medium: "#CCCCCC",
+          light: "#F0F0F0",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -51,6 +50,51 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+      },
+      fontSize: {
+        h2: [
+          "24px",
+          {
+            lineHeight: "1.4",
+            letterSpacing: "0.3px",
+            fontWeight: "700",
+          },
+        ],
+        h3: [
+          "20px",
+          {
+            lineHeight: "1.4",
+            letterSpacing: "0.3px",
+            fontWeight: "600",
+          },
+        ],
+        h5: [
+          "17px",
+          {
+            lineHeight: "1.4",
+            letterSpacing: "0.3em",
+            fontWeight: "500",
+          },
+        ],
+        h6: [
+          "15px",
+          {
+            lineHeight: "1.4",
+            letterSpacing: "0.3px",
+            fontWeight: "500",
+          },
+        ],
+        body: [
+          "14px",
+          {
+            lineHeight: "1.4",
+            letterSpacing: "0.3px",
+            fontWeight: "400",
+          },
+        ],
+      },
+      fontFamily: {
+        pretendard: ["Pretendard", "sans-serif"],
       },
     },
   },

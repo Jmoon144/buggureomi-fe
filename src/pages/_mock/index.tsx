@@ -51,6 +51,11 @@ export function MockRouteList() {
       path: "/answer-create",
       component: "AnswerCreate",
     },
+    {
+      task: "MCRT-2",
+      path: "/question-complete",
+      component: "QuestionComplete",
+    },
     // 나 돌아보기
     {
       task: "MAIN-5",

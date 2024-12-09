@@ -14,8 +14,9 @@ export function ColorPicker({
       {colorCodes.map((code) => (
         <div
           key={code}
-          className={`w-8 h-8 rounded-md cursor-pointer bg-[${code}]`}
+          className={"w-8 h-8 rounded-md cursor-pointer"}
           style={{
+            backgroundColor: code,
             ...(colorCode === code
               ? {
                   filter: `drop-shadow(0 0 1px ${colorCode}) drop-shadow(0 0 4px ${colorCode})`,

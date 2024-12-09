@@ -6,7 +6,7 @@ import { Answer } from "@/types/answer";
 import WithoutAnswer from "./components/WithoutAnswer";
 import WithAnswer from "./components/WithAnswer";
 import NonLoggedSection from "./components/NonLoggedSection";
-import { getAnswerList } from "../../api/answer";
+import { answer } from "../../api/answer";
 
 export default function Main() {
   const [memberId, setMemberId] = useState<string>();
@@ -27,9 +27,9 @@ export default function Main() {
 
   useEffect(() => {
     if (memberId) {
-      getAnswerList(memberId).then((data) => {
-        setAnswers(data.data.list);
-        setNickname(data.data.nickname);
+      answer.list(memberId).then((data) => {
+        setAnswers(data.data.data.list);
+        setNickname(data.data.data.nickname);
       });
     }
   }, [memberId]);

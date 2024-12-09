@@ -1,5 +1,5 @@
 import RootLayout from "@/components/RootLayout";
-import Routing from "./pages/index";
+import Routing from "@/routes";
 
 function App() {
   return (

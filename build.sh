@@ -1,5 +1,5 @@
 #!/bin/sh
 cd ../
 mkdir output
-cp -R ./buggureomi/* ./output
-cp -R ./output ./buggureomi/
+cp -R ./buggureomi-fe/* ./output
+cp -R ./output ./buggureomi-fe/

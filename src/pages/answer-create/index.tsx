@@ -10,11 +10,19 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import UnderlineInput from "@/components/input/UnderlineInput";
 import { COLOR_CODE_LIST } from "@/constant/color";
+import { answerAPI } from "@/api/answer";
+import { DirectLogin } from "@/components/display/DirectLogin";
 
 export default function AnswerCreate() {
   const [colorCode, setColorCode] = useState<string | undefined>(undefined);
   const [content, setContent] = useState<string>("");
   const [senderName, setSenderName] = useState<string>("");
+
+  const memberId = localStorage.getItem("userId");
+
+  if (!memberId) {
+    return <DirectLogin />;
+  }
 
   return (
     <section className="h-screen flex justify-evenly flex-col items-center">
@@ -73,8 +81,17 @@ export default function AnswerCreate() {
         className="bg-gray-400"
         disabled={!senderName || !content}
         children="보따리에 넣기"
-        onClick={() => {
+        onClick={async () => {
           // TODO: Answer Post API Call
+
+          answerAPI.create({
+            memberId: Number(localStorage.getItem("userId")),
+            questionId: 1,
+            nickname: "삭제 예정 데이터",
+            sender: senderName,
+            content,
+            colorCode: colorCode ?? COLOR_CODE_LIST[0],
+          });
         }}
       />
     </section>

@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button";
 import RandomInput from "./components/RandomInput";
 import { useState } from "react";
 import { BUNDEL_IMAGE_URL } from "@/constant/image";
+import { useHistory } from "react-router-dom";
 
 export default function QuestionCreate() {
+  const history = useHistory();
   const [question, setQuestion] = useState<string>("");
 
   const handleChangeQuestion = (value: string) => {
@@ -32,7 +34,10 @@ export default function QuestionCreate() {
         <Button
           disabled={!question.trim().length}
           onClick={() => {
-            // TODO: Detail Page로 direct되도록 로직 추가 필요
+            history.push({
+              pathname: "/question-create-detail",
+              state: { content: question },
+            });
           }}
           children="다음"
         />

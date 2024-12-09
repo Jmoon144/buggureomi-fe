@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import { memberAPI } from "@/api/member";
@@ -17,9 +17,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
-export default function MemberJoin() {
+export default function MemberLogin() {
+  const { state } = useLocation<{ memberId: number; questionId: number }>();
   const [errorMessage, setErrorMessage] = useState<string>();
 
+  console.log(state);
   const history = useHistory();
 
   const form = useForm<MemberLoginParam>({
@@ -34,8 +36,16 @@ export default function MemberJoin() {
       const data = res.data;
 
       if (data.status === "OK") {
-        history.push("/main");
         localStorage.setItem("userId", String(data.data.id));
+
+        if (state?.memberId && state?.questionId) {
+          history.push({
+            pathname: "/answer",
+            search: `?memberId=${state.memberId}&questionId=${state.questionId}`,
+          });
+        } else {
+          history.push("/main");
+        }
         setErrorMessage("");
       } else {
         setErrorMessage(data.message);

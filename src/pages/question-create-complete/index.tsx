@@ -19,6 +19,7 @@ export default function QuestionCreateComplete() {
 
       <div className="flex gap-1">
         <Button>메인 이동</Button>
+        {/* 빌드 에러. todo: memberId 전달 or 전역 상태 관리 or 다른 방법 필요.  */}
         <ShareButton />
       </div>
     </div>

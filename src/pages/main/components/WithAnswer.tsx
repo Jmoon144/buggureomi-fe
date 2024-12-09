@@ -4,18 +4,27 @@ import { BUNDEL_IMAGE_URL } from "@/constant/image";
 import { Answer } from "@/types/answer";
 import { SelfReflection } from "@/types/self-reflection";
 import { useHistory } from "react-router-dom";
+import { getSelfReflectionAnswer } from "../../../api/answer";
+import { useEffect, useState } from "react";
 
 type Props = {
   answerCount: number;
   previewMessage: Answer;
+  memberId: string;
 };
 
-export default function WithAnswer({ answerCount, previewMessage }: Props) {
-  const selfReflection: SelfReflection = {
-    type: 0,
-    list: [],
-    regDate: "",
-  };
+export default function WithAnswer({
+  answerCount,
+  previewMessage,
+  memberId,
+}: Props) {
+  const [selfReflection, setSelfReflection] = useState<SelfReflection>([]);
+
+  useEffect(() => {
+    getSelfReflectionAnswer(memberId).then((res) =>
+      setSelfReflection(res.data)
+    );
+  }, [memberId]);
 
   const history = useHistory();
 
@@ -32,8 +41,8 @@ export default function WithAnswer({ answerCount, previewMessage }: Props) {
       <span className="font-bold mb-4 ">
         누구의 쪽지일까요? 지금 열어보세요!
       </span>
-      <ShareButton className="mb-2" />
-      {selfReflection.list.length === 0 ? (
+      <ShareButton memberId={memberId} className="mb-2" />
+      {selfReflection.length === 0 ? (
         <Button onClick={() => history.push("/self-reflection")}>
           나 돌아보기
         </Button>

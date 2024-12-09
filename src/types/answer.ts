@@ -1,4 +1,5 @@
 export interface Answer {
+  answerId: string;
   sender: string;
   content: string;
   colorCode: string;

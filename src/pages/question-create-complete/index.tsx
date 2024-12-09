@@ -1,7 +1,9 @@
 import ShareButton from "@/components/share/ShareButton";
 import { Button } from "@/components/ui/button";
+import { MEMBER_ID_KEY } from "@/constant/keys";
 
 export default function QuestionCreateComplete() {
+  const memberId = localStorage.getItem(MEMBER_ID_KEY);
   return (
     <div className="flex flex-col items-center gap-3">
       <div className="text-center">
@@ -19,8 +21,7 @@ export default function QuestionCreateComplete() {
 
       <div className="flex gap-1">
         <Button>메인 이동</Button>
-        {/* 빌드 에러. todo: memberId 전달 or 전역 상태 관리 or 다른 방법 필요.  */}
-        <ShareButton />
+        {memberId && <ShareButton memberId={memberId} />}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import WithoutAnswer from "./components/WithoutAnswer";
 import WithAnswer from "./components/WithAnswer";
 import NonLoggedSection from "./components/NonLoggedSection";
 import { answerAPI } from "../../api/answer";
+import { MEMBER_ID_KEY } from "@/constant/keys";
 
 export default function Main() {
   const [memberId, setMemberId] = useState<string>();
@@ -15,7 +16,7 @@ export default function Main() {
 
   useEffect(() => {
     const checkLocalStorage = () => {
-      const userId = localStorage.getItem("userId");
+      const userId = localStorage.getItem(MEMBER_ID_KEY);
 
       if (userId) {
         setMemberId(userId);

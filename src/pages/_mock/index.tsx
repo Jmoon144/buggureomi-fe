@@ -12,6 +12,17 @@ type MockRouteType = {
 
 export function MockRouteList() {
   const MockRouteList: MockRouteType[] = [
+    // 멤버
+    {
+      task: "SIGN-1",
+      path: "/member-join",
+      component: "MemberJoin",
+    },
+    {
+      task: "SIGN-2",
+      path: "/member-login",
+      component: "MemberLogin",
+    },
     // 질문 생성
     {
       task: "QCRT-1",

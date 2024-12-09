@@ -17,10 +17,24 @@ export type AnswerCreateResponse = BaseResponse<{
   colorCode: string;
 }>;
 
-export type AnswerListResponse = BaseResponse<{
-  list: Answer[];
+export type SelfReflectionAnswerResponse = BaseResponse<SelfReflection>;
+
+export type GetAnswerListParam = {
+  memberId: number;
+};
+
+export type GetAnswerListResponse = BaseResponse<{
+  list: Answer[] | null;
   nickname: string;
   totalCount: number;
 }>;
 
-export type SelfReflectionAnswerResponse = BaseResponse<SelfReflection>;
+export type GetAnswerDetailParam = {
+  answerId: number;
+};
+export type GetAnswerDetailResponse = BaseResponse<Answer | null>;
+
+export type DeleteAnswerParam = {
+  answerId: number;
+};
+export type DeleteAnswerResponse = BaseResponse<null>;

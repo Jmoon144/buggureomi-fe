@@ -4,7 +4,7 @@ import { BUNDEL_IMAGE_URL } from "@/constant/image";
 import { Answer } from "@/types/answer";
 import { SelfReflection } from "@/types/self-reflection";
 import { useHistory } from "react-router-dom";
-import { answer } from "../../../api/answer";
+import { answerAPI } from "../../../api/answer";
 import { useEffect, useState } from "react";
 
 type Props = {
@@ -21,9 +21,9 @@ export default function WithAnswer({
   const [selfReflection, setSelfReflection] = useState<SelfReflection>([]);
 
   useEffect(() => {
-    answer
-      .selfReflection(memberId)
-      .then((res) => setSelfReflection(res.data.data));
+    answerAPI
+      .getSelfReflectionAnswer(memberId)
+      .then((res) => setSelfReflection(res.data));
   }, [memberId]);
 
   const history = useHistory();

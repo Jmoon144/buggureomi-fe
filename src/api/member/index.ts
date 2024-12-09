@@ -2,7 +2,7 @@ import { AxiosResponse } from "axios";
 import { api } from "..";
 import * as T from "./type";
 
-export const member = {
+export const memberAPI = {
   join: async (
     param: T.MemberJoinParam
   ): Promise<AxiosResponse<T.MemberJoinResponse>> => {

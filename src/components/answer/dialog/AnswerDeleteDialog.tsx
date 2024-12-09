@@ -1,3 +1,4 @@
+import { answerAPI } from "@/api/answer";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,9 +13,26 @@ import {
 type Props = {
   isOpen: boolean;
   onClose: () => void;
+  targetId: number;
+  onSuccess: () => void;
 };
 
-export default function AnswerDeleteDialog({ isOpen, onClose }: Props) {
+export default function AnswerDeleteDialog({
+  isOpen,
+  onClose,
+  targetId,
+  onSuccess,
+}: Props) {
+  const handleDeleteAnswer = async (answerId: number) => {
+    await answerAPI.delete({ answerId }).then((res) => {
+      const data = res.data;
+
+      if (data.status === "OK") {
+        onSuccess();
+      }
+    });
+  };
+
   return (
     <AlertDialog open={isOpen} onOpenChange={onClose}>
       <AlertDialogContent>
@@ -27,7 +45,9 @@ export default function AnswerDeleteDialog({ isOpen, onClose }: Props) {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>취소</AlertDialogCancel>
-          <AlertDialogAction>삭제</AlertDialogAction>
+          <AlertDialogAction onClick={() => handleDeleteAnswer(targetId)}>
+            삭제
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

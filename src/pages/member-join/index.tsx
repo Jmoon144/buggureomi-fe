@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { member } from "@/api/member";
+import { memberAPI } from "@/api/member";
 import { MemberJoinParam } from "@/api/member/type";
 import { memberJoin, MemberJoinFormType } from "./schema/memberJoinSchema";
 
@@ -35,7 +35,7 @@ export default function MemberJoin() {
       ...values,
       email: values.email as `${string}@${string}`,
     };
-    member.join(joinParams).then((res) => {
+    memberAPI.join(joinParams).then((res) => {
       const data = res.data;
 
       if (data.status === "OK") {

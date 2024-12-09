@@ -1,9 +1,8 @@
 import { hexToRgba } from "@/lib/colorTools";
-
-import { Marble } from "@/pages/answer-result/type/marble";
+import { Answer } from "@/types/answer";
 
 interface Props {
-  answer: Marble;
+  answer: Answer;
   onDialogOpen: () => void;
 }
 

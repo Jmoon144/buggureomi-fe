@@ -2,7 +2,7 @@ import { AxiosResponse } from "axios";
 import { api } from "..";
 import * as T from "./type";
 
-export const answer = {
+export const answerAPI = {
   create: async (
     param: T.AnswerCreateParam
   ): Promise<AxiosResponse<T.AnswerCreateResponse>> => {
@@ -11,16 +11,28 @@ export const answer = {
     return res;
   },
   list: async (
-    memberId: string
-  ): Promise<AxiosResponse<T.AnswerListResponse>> => {
-    const res = await api.get(`/answer/${memberId}/list`);
+    param: T.GetAnswerListParam
+  ): Promise<AxiosResponse<T.GetAnswerListResponse>> => {
+    const res = await api.get(`answer/${param.memberId}/list`);
 
     return res;
   },
-  selfReflection: async (
-    memberId: string
-  ): Promise<AxiosResponse<T.SelfReflectionAnswerResponse>> => {
-    const res = await api.get(`/self-reflection/${memberId}/list`);
+  detail: async (
+    param: T.GetAnswerDetailParam
+  ): Promise<AxiosResponse<T.GetAnswerListResponse>> => {
+    const res = await api.get(`answer/${param.answerId}`);
+
     return res;
+  },
+  delete: async (param: T.DeleteAnswerParam) => {
+    const res = await api.delete(`answer/${param.answerId}`);
+
+    return res;
+  },
+  getSelfReflectionAnswer: async (
+    memberId: string
+  ): Promise<T.SelfReflectionAnswerResponse> => {
+    const res = await api.get(`/self-reflection/${memberId}/list`);
+    return res.data;
   },
 };

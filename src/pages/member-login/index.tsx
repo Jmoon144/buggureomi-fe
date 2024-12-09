@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-import { member } from "@/api/member";
+import { memberAPI } from "@/api/member";
 import { MemberLoginParam } from "@/api/member/type";
 
 import { Button } from "@/components/ui/button";
@@ -30,7 +30,7 @@ export default function MemberJoin() {
   });
 
   function onSubmit(values: MemberLoginParam) {
-    member.login(values).then((res) => {
+    memberAPI.login(values).then((res) => {
       const data = res.data;
 
       if (data.status === "OK") {

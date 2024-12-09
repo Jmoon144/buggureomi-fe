@@ -5,23 +5,35 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-import { Marble } from "@/pages/answer-result/type/marble";
 import { Button } from "../../ui/button";
 import { useState } from "react";
 import AnswerDeleteDialog from "./AnswerDeleteDialog";
 
+import { Answer } from "@/types/answer";
+
 type Props = {
   isOpen: boolean;
   onClose: () => void;
-  data: Marble;
+  data: Answer;
+  onDeleteSuccess: () => void;
 };
 
-export default function AnswerDetailDialog({ isOpen, onClose, data }: Props) {
+export default function AnswerDetailDialog({
+  isOpen,
+  onClose,
+  data,
+  onDeleteSuccess,
+}: Props) {
   const [isDeleteAlertOpen, setIsDeleteDialogOpen] = useState(false);
 
   const handleDialogToggle = () => {
     setIsDeleteDialogOpen(!isDeleteAlertOpen);
   };
+  const handleDeleteSuccess = () => {
+    setIsDeleteDialogOpen(false);
+    onDeleteSuccess();
+  };
+
   return (
     <>
       <Dialog open={isOpen} onOpenChange={onClose}>
@@ -39,6 +51,8 @@ export default function AnswerDetailDialog({ isOpen, onClose, data }: Props) {
       <AnswerDeleteDialog
         isOpen={isDeleteAlertOpen}
         onClose={handleDialogToggle}
+        targetId={Number(data.answerId)}
+        onSuccess={handleDeleteSuccess}
       />
     </>
   );

@@ -26,7 +26,7 @@ export default function Routing() {
         <RootLayout>
           <Switch>
             {/* Route 확인용 (작업 시 꼭 추가 부탁드립니다!!) */}
-            <Route exact path="/" render={() => <MockRouteList />} />
+            <Route exact path="/" render={() => <Redirect to={"/main"} />} />
 
             <Route exact path="/member-login" render={() => <MemberLogin />} />
             <Route exact path="/member-join" render={() => <MemberJoin />} />

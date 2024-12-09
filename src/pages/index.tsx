@@ -14,6 +14,7 @@ import QuestionCreateComplete from "./question-create-complete";
 import AnswerCreate from "./answer-create";
 import AnswerResult from "./answer-result";
 import SelfReflection from "./self-reflection";
+import Settings from "@/pages/settings";
 
 export default function Routing() {
   return (
@@ -52,6 +53,7 @@ export default function Routing() {
 
           <Route exact path="/answer-create" render={() => <AnswerCreate />} />
           <Route exact path="/answer-result" render={() => <AnswerResult />} />
+          <Route exact path="/settings" render={() => <Settings />} />
 
           <Redirect to="/" />
         </Switch>

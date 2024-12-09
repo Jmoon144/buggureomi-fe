@@ -17,105 +17,108 @@ import SelfReflection from "@/pages/self-reflection";
 import Settings from "@/pages/settings";
 import QuestionComplete from "@/pages/question-complete";
 import PrivateRoute from "@/routes/PrivateRoute";
+import RootLayout from "@/components/RootLayout";
 
 export default function Routing() {
   return (
     <>
       <BrowserRouter>
-        <Switch>
-          {/* Route 확인용 (작업 시 꼭 추가 부탁드립니다!!) */}
-          <Route exact path="/" render={() => <MockRouteList />} />
+        <RootLayout>
+          <Switch>
+            {/* Route 확인용 (작업 시 꼭 추가 부탁드립니다!!) */}
+            <Route exact path="/" render={() => <MockRouteList />} />
 
-          <Route exact path="/member-login" render={() => <MemberLogin />} />
-          <Route exact path="/member-join" render={() => <MemberJoin />} />
+            <Route exact path="/member-login" render={() => <MemberLogin />} />
+            <Route exact path="/member-join" render={() => <MemberJoin />} />
 
-          <Route
-            exact
-            path="/main"
-            render={() => (
-              <PrivateRoute>
-                <Main />
-              </PrivateRoute>
-            )}
-          />
+            <Route
+              exact
+              path="/main"
+              render={() => (
+                <PrivateRoute>
+                  <Main />
+                </PrivateRoute>
+              )}
+            />
 
-          <Route
-            exact
-            path="/question-create"
-            render={() => (
-              <PrivateRoute>
-                <QuestionCreate />
-              </PrivateRoute>
-            )}
-          />
-          <Route
-            exact
-            path="/question-create-detail"
-            render={() => (
-              <PrivateRoute>
-                <QuestionCreateDetail />
-              </PrivateRoute>
-            )}
-          />
-          <Route
-            exact
-            path="/question-create-complete"
-            render={() => (
-              <PrivateRoute>
-                <QuestionCreateComplete />
-              </PrivateRoute>
-            )}
-          />
-          <Route
-            exact
-            path="/question-complete"
-            render={() => (
-              <PrivateRoute>
-                <QuestionComplete />
-              </PrivateRoute>
-            )}
-          />
+            <Route
+              exact
+              path="/question-create"
+              render={() => (
+                <PrivateRoute>
+                  <QuestionCreate />
+                </PrivateRoute>
+              )}
+            />
+            <Route
+              exact
+              path="/question-create-detail"
+              render={() => (
+                <PrivateRoute>
+                  <QuestionCreateDetail />
+                </PrivateRoute>
+              )}
+            />
+            <Route
+              exact
+              path="/question-create-complete"
+              render={() => (
+                <PrivateRoute>
+                  <QuestionCreateComplete />
+                </PrivateRoute>
+              )}
+            />
+            <Route
+              exact
+              path="/question-complete"
+              render={() => (
+                <PrivateRoute>
+                  <QuestionComplete />
+                </PrivateRoute>
+              )}
+            />
 
-          <Route
-            exact
-            path="/self-reflection"
-            render={() => (
-              <PrivateRoute>
-                <SelfReflection />
-              </PrivateRoute>
-            )}
-          />
+            <Route
+              exact
+              path="/self-reflection"
+              render={() => (
+                <PrivateRoute>
+                  <SelfReflection />
+                </PrivateRoute>
+              )}
+            />
 
-          <Route
-            exact
-            path="/answer-create"
-            render={() => (
-              <PrivateRoute>
-                <AnswerCreate />
-              </PrivateRoute>
-            )}
-          />
-          <Route
-            exact
-            path="/answer-result"
-            render={() => (
-              <PrivateRoute>
-                <AnswerResult />
-              </PrivateRoute>
-            )}
-          />
-          <Route
-            exact
-            path="/settings"
-            render={() => (
-              <PrivateRoute>
-                <Settings />
-              </PrivateRoute>
-            )}
-          />
+            <Route
+              exact
+              path="/answer-create"
+              render={() => (
+                <PrivateRoute>
+                  <AnswerCreate />
+                </PrivateRoute>
+              )}
+            />
+            <Route
+              exact
+              path="/answer-result"
+              render={() => (
+                <PrivateRoute>
+                  <AnswerResult />
+                </PrivateRoute>
+              )}
+            />
+            <Route
+              exact
+              path="/settings"
+              render={() => (
+                <PrivateRoute>
+                  <Settings />
+                </PrivateRoute>
+              )}
+            />
 
-          <Redirect to="/" />
-        </Switch>
+            <Redirect to="/" />
+          </Switch>
+        </RootLayout>
       </BrowserRouter>
     </>
   );

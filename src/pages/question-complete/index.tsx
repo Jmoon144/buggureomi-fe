@@ -1,39 +1,46 @@
 import { Button } from "@/components/ui/button";
-import { COLOR_CODE_LIST } from "@/constant/color";
-import { BUNDEL_IMAGE_URL } from "@/constant/image";
-import { MOCK_MEMBER } from "@/pages/_mock/data/member";
 import { useHistory } from "react-router-dom";
+import mascot_back from "@/assets/mascot_back.svg";
+import { FaLink } from "react-icons/fa6";
 
 export default function QuestionComplete() {
   const history = useHistory();
 
   return (
-    <section className="h-screen flex flex-col">
-      <div className="flex flex-col items-center gap-3">
-        <h2 className="text-h2 text-gray-900 text-center">
-          {MOCK_MEMBER.nickname}님의 보따리에
-          <br />
-          마음이 담긴 구슬이 담겼어요!
-        </h2>
-        <div
-          className="w-20 h-20 rounded-full"
-          style={{ backgroundColor: COLOR_CODE_LIST[0] }}
+    <section className="flex flex-col items-center gap-4 justify-evenly h-screen">
+      <p className="text-center text-white text-2xl">
+        <b>보따리가 완성되었어요!</b>
+        <br />
+        질문을 공유해볼까요?
+      </p>
+
+      <img src={mascot_back} className="w-40 h-40" alt="bundle" />
+
+      <div className="flex flex-col gap-4">
+        <Button
+          className="w-72 h-12"
+          onClick={() => {
+            history.push("/main");
+          }}
+          children={"완료"}
+        />
+        <Button
+          className="w-72 h-12 bg-white"
+          onClick={() => {
+            history.push("/main");
+          }}
+          children={
+            <div className="w-full flex flex-row items-center justify-center gap-2">
+              <FaLink
+                color="#667EF5"
+                size={25}
+                style={{ width: "1.5rem", height: "1.5rem" }}
+              />
+              <span className="text-[#667EF5]">링크 공유하기</span>
+            </div>
+          }
         />
       </div>
-      <div className="w-full max-w-md">
-        <img
-          src={BUNDEL_IMAGE_URL}
-          alt="보따리 이미지"
-          className="w-full h-full"
-        />
-      </div>
-      <Button
-        className="w-full"
-        variant="default"
-        onClick={() => history.push("/main")}
-      >
-        메인 이동
-      </Button>
     </section>
   );
 }

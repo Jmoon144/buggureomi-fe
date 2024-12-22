@@ -15,6 +15,7 @@ import SelfReflection from "@/pages/self-reflection";
 import QuestionComplete from "@/pages/question-complete";
 import PrivateRoute from "@/routes/PrivateRoute";
 import RootLayout from "@/components/RootLayout";
+import { Answer } from "@/pages/answer/Answer";
 
 export default function Routing() {
   return (
@@ -37,7 +38,6 @@ export default function Routing() {
                 </PrivateRoute>
               )}
             />
-
             <Route
               exact
               path="/question-create"
@@ -74,7 +74,6 @@ export default function Routing() {
                 </PrivateRoute>
               )}
             />
-
             <Route
               exact
               path="/self-reflection"
@@ -84,7 +83,15 @@ export default function Routing() {
                 </PrivateRoute>
               )}
             />
-
+            <Route
+              exact
+              path="/answer"
+              render={() => (
+                <PrivateRoute>
+                  <Answer />
+                </PrivateRoute>
+              )}
+            />
             <Route
               exact
               path="/answer-create"

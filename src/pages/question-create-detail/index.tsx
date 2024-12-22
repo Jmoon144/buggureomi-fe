@@ -1,16 +1,21 @@
-import { useHistory } from "react-router-dom";
-// import { questionAPI } from "@/api/question";
+import { useHistory, useLocation } from "react-router-dom";
 import { DirectLogin } from "@/components/display/DirectLogin";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import buddle from "@/assets/bunddle.svg";
-
+import { QuestionBundle } from "@/components/question/QuestionBundle";
+import { questionAPI } from "@/api/question";
 import { useUserStore } from "@/store/userStore";
+
+interface QuestionContent {
+  content: string; // question의 타입에 따라 변경
+}
 
 export default function QuestionCreateDetail() {
   // const { state } = useLocation<{ content: string }>();
   const history = useHistory();
+  const location = useLocation();
+  const content = (location.state as QuestionContent)?.content;
 
   const { userId } = useUserStore();
 
@@ -20,21 +25,21 @@ export default function QuestionCreateDetail() {
 
   const handleClick = () => {
     // TODO: Token 구현 후 API 접목 예정
-    // questionAPI
-    //   .create({
-    //     memberId: userId,
-    //     content: state?.content ?? "",
-    //     isPublicVisible: 1,
-    //     isCountVisible: 1,
-    //     isAuthRequired: 1,
-    //     isCommonQuestion: 1,
-    //   })
-    //   .then((res) => {
-    history.push({
-      pathname: "/question-complete",
-      // state: { questionId: res.data.data.questionId },
-    });
-    // });
+    questionAPI
+      .create({
+        memberId: userId,
+        content: content,
+        isPublicVisible: 1,
+        isCountVisible: 1,
+        isAuthRequired: 1,
+        isCommonQuestion: 1,
+      })
+      .then((res) => {
+        history.push({
+          pathname: "/question-complete",
+          state: { questionId: res.data.data.questionId },
+        });
+      });
   };
 
   return (
@@ -44,9 +49,7 @@ export default function QuestionCreateDetail() {
         <br />
         디테일을 잡아볼까요?
       </p>
-
-      <img src={buddle} className="w-40 h-40" alt="bundle" />
-
+      <QuestionBundle value={content} />
       <div className="flex w-full flex-col gap-6">
         <div className="flex items-center gap-x-2 justify-between">
           <Label
